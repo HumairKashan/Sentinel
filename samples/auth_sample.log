@@ -1,0 +1,22 @@
+mkdir samples
+```
+
+### Step 2: Create the auth_sample.log file
+
+Create a file at `samples/auth_sample.log` with this content:
+```
+Jan  2 14:30:12 server sshd[1001]: Failed password for admin from 192.168.1.100 port 55001 ssh2
+Jan  2 14:30:18 server sshd[1002]: Failed password for admin from 192.168.1.100 port 55002 ssh2
+Jan  2 14:30:24 server sshd[1003]: Failed password for root from 192.168.1.100 port 55003 ssh2
+Jan  2 14:30:30 server sshd[1004]: Failed password for admin from 192.168.1.100 port 55004 ssh2
+Jan  2 14:30:36 server sshd[1005]: Failed password for admin from 192.168.1.100 port 55005 ssh2
+Jan  2 14:30:42 server sshd[1006]: Failed password for admin from 192.168.1.100 port 55006 ssh2
+Jan  2 14:30:48 server sshd[1007]: Failed password for root from 192.168.1.100 port 55007 ssh2
+Jan  2 14:30:54 server sshd[1008]: Failed password for admin from 192.168.1.100 port 55008 ssh2
+Jan  2 14:35:10 server sshd[2001]: Accepted publickey for alice from 10.0.0.50 port 54321 ssh2: RSA SHA256:abc123
+Jan  2 14:40:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt update
+Jan  2 14:42:15 server sshd[2103]: Failed password for invalid user hacker from 203.0.113.50 port 45678 ssh2
+Jan  2 14:45:30 server sshd[2201]: Accepted password for bob from 10.0.0.75 port 61234 ssh2
+Jan  2 14:50:05 server sudo: bob : TTY=pts/1 ; PWD=/home/bob ; USER=root ; COMMAND=/bin/systemctl restart nginx
+Jan  2 14:55:12 server sshd[2305]: Failed password for admin from 172.16.0.200 port 33001 ssh2
+Jan  2 15:00:00 server sshd[2401]: Accepted publickey for deploy from 10.0.1.100 port 40000 ssh2: RSA SHA256:xyz789
