@@ -9,7 +9,7 @@ mod stats;
 
 use anyhow::Result;
 use cli::Args;
-use output::OutputMode;
+
 use stats::Stats;
 
 fn main() -> Result<()> {
