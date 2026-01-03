@@ -16,10 +16,7 @@ fn main() -> Result<()> {
     let args = Args::parse();
 
     let mut stats = Stats::default();
-    let mut engine = rules::Engine::new(
-        args.brute_threshold,
-        args.brute_window_secs,
-    );
+    let mut engine = rules::Engine::new(args.brute_threshold, args.brute_window_secs);
     let out_mode = if args.json {
         output::OutputMode::Jsonl
     } else {
