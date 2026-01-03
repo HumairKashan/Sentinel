@@ -1,0 +1,14 @@
+# Sentinel custom rule definitions
+# NOTE: This file is not yet loaded by the engine.
+# It exists as a design placeholder for future extension.
+
+custom_rules:
+  - id: suspicious_user_agent
+    pattern: "curl|wget|python"
+    severity: medium
+    message: "Suspicious user agent detected"
+
+  - id: repeated_root_login
+    pattern: "Accepted .* for root"
+    severity: high
+    message: "Root login detected"
