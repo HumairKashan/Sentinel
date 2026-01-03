@@ -1,0 +1,10 @@
+# Don't count build/automation files in language stats
+Makefile linguist-vendored
+**/*.mk linguist-vendored
+
+# If you have DTrace scripts and don't want them counted
+**/*.d linguist-vendored
+
+# Common: ignore generated stuff (optional)
+**/target/** linguist-generated
+**/*.lock linguist-generated
