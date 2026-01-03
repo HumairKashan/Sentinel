@@ -11,7 +11,11 @@ pub fn build_reader(args: &Args) -> Result<LineIter> {
     if args.stdin {
         let stdin = io::stdin();
         let reader = stdin.lock();
-        return Ok(Box::new(BufReader::new(reader).lines().map(|l| l.map_err(Into::into))));
+        return Ok(Box::new(
+            BufReader::new(reader)
+                .lines()
+                .map(|l| l.map_err(Into::into)),
+        ));
     }
 
     let path = args
@@ -24,7 +28,9 @@ pub fn build_reader(args: &Args) -> Result<LineIter> {
         Ok(Box::new(FollowReader::new(path)))
     } else {
         let f = File::open(path)?;
-        Ok(Box::new(BufReader::new(f).lines().map(|l| l.map_err(Into::into))))
+        Ok(Box::new(
+            BufReader::new(f).lines().map(|l| l.map_err(Into::into)),
+        ))
     }
 }
 

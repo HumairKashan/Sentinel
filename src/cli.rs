@@ -1,7 +1,11 @@
 use clap::Parser;
 
 #[derive(Parser, Debug)]
-#[command(name = "rust-log-sentinel", version, about = "Lightweight log monitoring + alerting")]
+#[command(
+    name = "rust-log-sentinel",
+    version,
+    about = "Lightweight log monitoring + alerting"
+)]
 pub struct Args {
     /// Path to a log file (e.g., /var/log/auth.log)
     #[arg(long)]

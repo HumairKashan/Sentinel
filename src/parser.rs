@@ -1,5 +1,5 @@
 use crate::event::LogEvent;
-use chrono::{DateTime, Local, Datelike, TimeZone};
+use chrono::{DateTime, Datelike, Local, TimeZone};
 use regex::Regex;
 use std::net::IpAddr;
 use std::str::FromStr;
@@ -71,15 +71,25 @@ fn extract_user(s: &str) -> Option<String> {
 fn extract_ts(s: &str) -> Option<DateTime<Local>> {
     // Syslog style: "Jan  2 17:30:45" or "Jan 2 17:30:45"
     let re = Regex::new(
-        r"^(?P<mon>[A-Z][a-z]{2})\s+(?P<day>\d{1,2})\s+(?P<h>\d{2}):(?P<m>\d{2}):(?P<sec>\d{2})"
-    ).ok()?;
+        r"^(?P<mon>[A-Z][a-z]{2})\s+(?P<day>\d{1,2})\s+(?P<h>\d{2}):(?P<m>\d{2}):(?P<sec>\d{2})",
+    )
+    .ok()?;
 
     let cap = re.captures(s)?;
 
     let mon = match cap.name("mon")?.as_str() {
-        "Jan" => 1, "Feb" => 2, "Mar" => 3, "Apr" => 4,
-        "May" => 5, "Jun" => 6, "Jul" => 7, "Aug" => 8,
-        "Sep" => 9, "Oct" => 10, "Nov" => 11, "Dec" => 12,
+        "Jan" => 1,
+        "Feb" => 2,
+        "Mar" => 3,
+        "Apr" => 4,
+        "May" => 5,
+        "Jun" => 6,
+        "Jul" => 7,
+        "Aug" => 8,
+        "Sep" => 9,
+        "Oct" => 10,
+        "Nov" => 11,
+        "Dec" => 12,
         _ => return None,
     };
 

@@ -36,7 +36,7 @@ struct Alert {
 
 #[test]
 fn test_brute_force_detection() {
-    use chrono::{Local, Duration};
+    use chrono::{Duration, Local};
 
     // This test verifies that 8 auth failures from the same IP
     // within 60 seconds triggers a brute_force alert
@@ -109,7 +109,7 @@ fn test_brute_force_cooldown() {
 
 #[test]
 fn test_different_ips_separate_tracking() {
-    use chrono::{Local, Duration};
+    use chrono::{Duration, Local};
 
     // Verify that failures from different IPs are tracked separately
     let ip1 = IpAddr::from_str("192.168.1.100").unwrap();
@@ -141,19 +141,13 @@ fn test_different_ips_separate_tracking() {
     // With threshold=8, neither IP should trigger alone
     // But if they were tracked together (bug), we'd get a false positive
 
-    assert_eq!(
-        events.iter().filter(|e| e.ip == Some(ip1)).count(),
-        4
-    );
-    assert_eq!(
-        events.iter().filter(|e| e.ip == Some(ip2)).count(),
-        4
-    );
+    assert_eq!(events.iter().filter(|e| e.ip == Some(ip1)).count(), 4);
+    assert_eq!(events.iter().filter(|e| e.ip == Some(ip2)).count(), 4);
 }
 
 #[test]
 fn test_sliding_window() {
-    use chrono::{Local, Duration};
+    use chrono::{Duration, Local};
 
     // Verify that old failures outside the window are removed
     let test_ip = IpAddr::from_str("192.168.1.100").unwrap();
